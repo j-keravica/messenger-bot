@@ -1,7 +1,7 @@
 include Facebook::Messenger
 
 Bot.on :message do |message|
-  handler = Sogette::MessageHandler.new(message)
+  handler = MessageHandler.new(message)
 
   user = handler.create_user
 

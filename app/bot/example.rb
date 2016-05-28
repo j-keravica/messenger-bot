@@ -13,8 +13,6 @@ Bot.on :message do |message|
 
   Bot.deliver(
     recipient: message.sender,
-    message: {
-      text: resp[:content]
-    }
+    message: resp
   )
 end

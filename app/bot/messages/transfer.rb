@@ -10,7 +10,7 @@ module Messages
           "type": "template",
           "payload": {
             "template_type": "button",
-            "text": "You don't have that much right now. Did you mean 10.000 RSD?",
+            "text": "You don't have that much on your account right now. Did you mean 10 000 RSD?",
             "buttons":[
               {
                 "type": "postback",

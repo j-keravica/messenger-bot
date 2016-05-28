@@ -1,6 +1,5 @@
 class CreateResponse
 
-
   UNPROCESSABLE = { :content => "I'm sorry, I don't understand that yet. Can you rephrase it somehow? :)" }
 
   def initialize(text)
@@ -13,9 +12,9 @@ class CreateResponse
 
     # send buttons to a user if he wants to transfer his money
     if @content.empty?
-      response = { :content => set_buttons }
+      response = set_buttons
     else
-      response = { :content => @content }
+      response = { text: @content }
     end
   end
 
@@ -28,7 +27,7 @@ class CreateResponse
   def set_buttons
     @content = transfer
 
-    @content ||= UNPROCESSABLE[:content]
+    @content ||= { text: UNPROCESSABLE[:content] }
   end
 
   def hi

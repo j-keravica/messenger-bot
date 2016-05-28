@@ -11,7 +11,7 @@ RSpec.describe CreateResponse do
       end
 
       it "send Hi message" do
-        expect(Messages::Hi.options).to include(@response[:content])
+        expect(Messages::Hi.options).to include(@response[:text])
       end
     end
 
@@ -23,7 +23,7 @@ RSpec.describe CreateResponse do
       end
 
       it "send Loan message" do
-        expect(Messages::Balance.options).to include(@response[:content])
+        expect(Messages::Balance.options).to include(@response[:text])
       end
     end
 
@@ -35,7 +35,7 @@ RSpec.describe CreateResponse do
       end
 
       it "send Transfer message" do
-        expect(Messages::Transfer.options).to include(@response[:content])
+        expect(Messages::Transfer.options).to include(@response)
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe CreateResponse do
       end
 
       it "send Unprocessable message" do
-        expect(@response[:content]).to eq(CreateResponse::UNPROCESSABLE[:content])
+        expect(@response[:text]).to eq(CreateResponse::UNPROCESSABLE[:content])
       end
     end
   end

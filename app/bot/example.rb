@@ -8,7 +8,7 @@ Bot.on :message do |message|
   resp = handler.create_response
 
   print "User ID=#{message.sender}"
-  print "/n"
+  print " "
   print "Message sent=#{resp[:content]}"
 
   Bot.deliver(

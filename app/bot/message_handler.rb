@@ -10,7 +10,7 @@ class MessageHandler
     @text = @message.text
     @attachments = @message.attachments
 
-    user = ::User.find_or_create_by(:facebook_id => @facebook_id)
+    # user = ::User.find_or_create_by(:facebook_id => @facebook_id)
   end
 
   def create_response

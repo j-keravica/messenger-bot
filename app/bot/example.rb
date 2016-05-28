@@ -7,6 +7,9 @@ Bot.on :message do |message|
 
   resp = handler.create_response
 
+  print message.sender
+  print resp[:content]
+
   Bot.deliver(
     recipient: message.sender,
     message: {

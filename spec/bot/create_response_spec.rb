@@ -27,6 +27,18 @@ RSpec.describe CreateResponse do
       end
     end
 
+    context "Ballance message" do
+      let(:message) { "What's my balance" }
+
+      before do
+        @response = CreateResponse.new(message).create
+      end
+
+      it "send Loan message" do
+        expect(@response).to eq(CreateResponse::BALANCE)
+      end
+    end
+
     context "Unprocessable message" do
       let(:message) { "Gibberish" }
 

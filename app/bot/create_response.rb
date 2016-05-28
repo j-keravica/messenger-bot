@@ -2,9 +2,16 @@ class CreateResponse
 
   HI = { :content => "What's up?",
          :attachment => "" }
+
   LOAN = { :content => "In our offer, we have these loans available",
            :attachment => "" }
-  UNPROCESSABLE = { :content => "Sorry, I can't process that :(",
+
+  BALANCE = { :content => "Balance on your main account is 34 501 dinars,
+
+                           Your savings account stands at 1864 euros.",
+              :attachment => "" }
+
+  UNPROCESSABLE = { :content => "I'm sorry, I don't understand that yet. Can you rephrase it somehow? :)",
                     :attachment => ""}
 
   def initialize(text)
@@ -12,7 +19,7 @@ class CreateResponse
   end
 
   def create
-    content = "#{hi} #{loan}".strip
+    content = "#{hi} #{loan} #{balance}".strip
 
     content = UNPROCESSABLE[:content] if content.empty?
 
@@ -27,6 +34,10 @@ class CreateResponse
 
   def loan
     LOAN[:content] if inside_a_message(["loan", "loans"])
+  end
+
+  def balance
+    BALANCE[:content] if inside_a_message(["balance"])
   end
 
   def unprocessable

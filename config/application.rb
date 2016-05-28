@@ -25,8 +25,8 @@ module MessengerBot
   end
 
   Facebook::Messenger.configure do |config|
-    config.access_token = 'EAAYxQNHjfNIBADV4gTrL0VjoQA1f14GgTGx6HfvBgRfJWK4ZCwckiyxSuCgkTO39XZAOGdP5mPGP38KkkJ9sw3TC265o6AfEKjdfUx0SaTrKouRafP5Ob5QHIwPRZBriPIv4UJR77O5AIvFMW28mgVaYSCEcMWlLbWGryf4EwZDZD'
-    config.app_secret = '93909c4f3b380041f878e50bd7122bd1'
+    config.access_token = 'EAAYWcNT6jMEBALrsybNhEYZCPvxvvqryyx5N4dlcGbK0G0ETiSpLoKSfudLJG19KWRgtqVAtwMsRhJUIvXFXE7u8FHnOMS0yZCPYTAyHxQkUYfqW0QFjpSpJQL1dyjKkhprC2l2dM226brDZAugqxJ639SwyuEFxbtFd9WIOQZDZD'
+    config.app_secret = 'a0b03c2457c0173ccb4468d9f10869b6'
     config.verify_token = 'my_voice_is_my_password_verify_me'
   end
 end

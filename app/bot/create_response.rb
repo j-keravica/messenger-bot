@@ -21,7 +21,7 @@ class CreateResponse
   private
 
   def set_content
-    "#{hi} #{balance}".strip
+    "#{hi} #{balance} #{bill}".strip
   end
 
   def set_buttons
@@ -40,6 +40,10 @@ class CreateResponse
 
   def transfer
     Messages::Transfer.content if inside_a_message(Messages::Transfer::BUZZ_WORDS)
+  end
+
+  def bill
+    Messages::Bill.content if inside_a_message(Messages::Bill::BUZZ_WORDS)
   end
 
   def unprocessable

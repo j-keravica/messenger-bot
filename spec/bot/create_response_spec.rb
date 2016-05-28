@@ -39,6 +39,18 @@ RSpec.describe CreateResponse do
       end
     end
 
+    context "Bill message" do
+      let(:message) { "Please pay my electricity bill." }
+
+      before do
+        @response = CreateResponse.new(message).create
+      end
+
+      it "send Bill message" do
+        expect(Messages::Bill.options).to include(@response[:text])
+      end
+    end
+
     context "Unprocessable message" do
       let(:message) { "Gibberish" }
 

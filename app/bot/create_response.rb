@@ -1,22 +1,36 @@
 class CreateResponse
 
+  HI = { :content => "What's up?",
+         :attachment => "" }
+  LOAN = { :content => "In our offer, we have these loans available",
+           :attachment => "" }
+  UNPROCESSABLE = { :content => "Sorry, I can't process that :(",
+                    :attachment => ""}
+
   def initialize(text)
     @text = text.downcase
   end
 
   def create
-    response = { :content => "", :attachment => "" }
+    content = "#{hi} #{loan}".strip
 
-    if @text.include? "hi"
-      response[:content] << "Hi there! How can I help you today?"
-    end
+    content = UNPROCESSABLE[:content] if content.empty?
 
-    if @text.include? "loan"
-      response[:content] << "In our offer, we have these loans available"
-      response[:attachment] << "attachment"
-    end
+    response = { :content => content, :attachment => "" }
+  end
 
-    response
+  private
+
+  def hi
+    HI[:content] if @text.include? "hi"
+  end
+
+  def loan
+    LOAN[:content] if @text.include? "loan"
+  end
+
+  def unprocessable
+    UNPROCESSABLE[:content]
   end
 
 end

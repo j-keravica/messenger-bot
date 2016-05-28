@@ -10,8 +10,10 @@ class CreateResponse
   def create
     @content = set_content
 
-    # send buttons to a user if he wants to transfer his money
-    if @content.empty?
+    # if @content is not already set, we are dealing with
+    # buttons message
+
+    if @content.nil?
       response = set_buttons
     else
       response = { text: @content }
@@ -21,11 +23,11 @@ class CreateResponse
   private
 
   def set_content
-    "#{hi} #{balance} #{bill}".strip
+    hi || balance || bill
   end
 
   def set_buttons
-    @content = transfer
+    @content = transfer || numbers
 
     @content ||= { text: UNPROCESSABLE[:content] }
   end
@@ -38,12 +40,16 @@ class CreateResponse
     Messages::Balance.content if inside_a_message(Messages::Balance::BUZZ_WORDS)
   end
 
+  def bill
+    Messages::Bill.content if inside_a_message(Messages::Bill::BUZZ_WORDS)
+  end
+
   def transfer
     Messages::Transfer.content if inside_a_message(Messages::Transfer::BUZZ_WORDS)
   end
 
-  def bill
-    Messages::Bill.content if inside_a_message(Messages::Bill::BUZZ_WORDS)
+  def numbers
+    Messages::Numbers.content if inside_a_message(Messages::Numbers::BUZZ_WORDS)
   end
 
   def unprocessable

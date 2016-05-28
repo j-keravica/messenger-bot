@@ -5,7 +5,7 @@ class CreateResponse
   end
 
   def create
-    response = {}
+    response = { "content" => "", "attachment" => "" }
 
     if @text.include? "hi"
       response["content"] << "Hi there! How can I help you today?"

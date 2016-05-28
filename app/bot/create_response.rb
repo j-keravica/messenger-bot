@@ -22,15 +22,19 @@ class CreateResponse
   private
 
   def hi
-    HI[:content] if @text.include? "hi"
+    HI[:content] if inside_a_message(["hey", "hello", "hi"])
   end
 
   def loan
-    LOAN[:content] if @text.include? "loan"
+    LOAN[:content] if inside_a_message(["loan", "loans"])
   end
 
   def unprocessable
     UNPROCESSABLE[:content]
+  end
+
+  def inside_a_message(words)
+    words.any? { |word| @text.include? word }
   end
 
 end

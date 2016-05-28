@@ -23,4 +23,10 @@ module MessengerBot
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
+
+  Facebook::Messenger.configure do |config|
+    config.access_token = 'EAAYxQNHjfNIBADV4gTrL0VjoQA1f14GgTGx6HfvBgRfJWK4ZCwckiyxSuCgkTO39XZAOGdP5mPGP38KkkJ9sw3TC265o6AfEKjdfUx0SaTrKouRafP5Ob5QHIwPRZBriPIv4UJR77O5AIvFMW28mgVaYSCEcMWlLbWGryf4EwZDZD'
+    config.app_secret = '93909c4f3b380041f878e50bd7122bd1'
+    config.verify_token = 'my_voice_is_my_password_verify_me'
+  end
 end

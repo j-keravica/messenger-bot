@@ -9,7 +9,7 @@ Bot.on :message do |message|
 
   print "User ID=#{message.sender}"
   print " "
-  print "Message sent=#{resp[:content]}"
+  print "Message sent=#{resp}"
 
   Bot.deliver(
     recipient: message.sender,

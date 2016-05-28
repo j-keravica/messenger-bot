@@ -7,22 +7,24 @@ module Messages
     def self.options
       [
         {
-          "type": "template",
-          "payload": {
-            "template_type": "button",
-            "text": "You don't have that much on your account right now. Did you mean 10 000 RSD?",
-            "buttons":[
-              {
-                "type": "postback",
-                "title": "Yes",
-                "payload": "YES"
-              },
-              {
-                "type": "postback",
-                "title": "No",
-                "payload": "NO"
-              }
-            ]
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": "You don't have that much on your account right now. Did you mean 10 000 RSD?",
+              "buttons":[
+                {
+                  "type": "postback",
+                  "title": "Yes",
+                  "payload": "YES"
+                },
+                {
+                  "type": "postback",
+                  "title": "No",
+                  "payload": "NO"
+                }
+              ]
+            }
           }
         }
       ]

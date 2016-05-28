@@ -1,10 +1,16 @@
 include Facebook::Messenger
 
 Bot.on :message do |message|
+  handler = Sogette::MessageHandler.new(message)
+
+  user = handler.create_user
+
+  resp = handler.create_response
+
   Bot.deliver(
     recipient: message.sender,
     message: {
-      text: 'Hello, human!'
+      text: resp.content
     }
   )
 end

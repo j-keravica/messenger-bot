@@ -10,7 +10,7 @@ module Messages
       @user.accounts.each do |account|
         if account.currency == "RSD"
           main_account = account
-        elsif account.currency = "EUR"
+        elsif account.currency == "EUR"
           eur_account = account
         end
       end

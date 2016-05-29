@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   mount Facebook::Messenger::Server, at: 'bot'
 
+  root "admin#index"
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

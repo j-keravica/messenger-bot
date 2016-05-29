@@ -5,8 +5,8 @@ RSpec.describe CreateResponse do
   describe "#create" do
 
     before do
-      @account = instance_double(Account, :currency => "RSD", :balance => 12000)
-      @user = instance_double(User, :id => 1, :facebook_id => "123", :accounts => [@account])
+      @user = User.create(:id => 1, :facebook_id => "123")
+      @account = Account.create(:currency => "RSD", :balance => 12000000, :user_id => @user.id)
       @response = CreateResponse.new(message, @user).create
     end
 
@@ -34,24 +34,37 @@ RSpec.describe CreateResponse do
           expect(@response[:text]).to include(":*")
         end
       end
+
+      context "Numbers message" do
+        let(:message) { "123456" }
+
+        before do
+          allow(@account).to receive(:update_attributes!)
+        end
+
+        it "send Numbers message" do
+          expect(Messages::Numbers::OPTIONS).to include(@response[:text])
+        end
+      end
     end
 
     context "buttons messages" do
       context "Bill message" do
-        let(:message) { "Payday :'(" }
+        let(:message) { "Pay my bills :'(" }
 
         it "send Bill message" do
           expect(@response).to have_key(:attachment)
         end
       end
 
-      context "Numbers message" do
-        let(:message) { "123456" }
+      context "Payday message" do
+        let(:message) { "Payday" }
 
-        it "send Numbers message" do
-          expect(Messages::Numbers::OPTIONS).to include(@response[:text])
+        it "send Bill message" do
+          expect(@response).to have_key(:attachment)
         end
       end
+
     end
 
     context "Unprocessable message" do

@@ -4,7 +4,7 @@ module Messages
     BUZZ_WORDS = ["transfer"]
 
     # Set of random options for "transfer" message that came from the user
-    def self.options
+    def options
       [
         {
           "attachment": {

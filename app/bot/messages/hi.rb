@@ -3,7 +3,7 @@ module Messages
 
     BUZZ_WORDS = ["hey", "hello", "hi"]
 
-    def self.options
+    def options
       ["What's up?", "Hey there.", "Oh, hi.", "Hello there."]
     end
 

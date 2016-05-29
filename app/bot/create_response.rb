@@ -2,8 +2,9 @@ class CreateResponse
 
   UNPROCESSABLE = { :content => "I'm sorry, I don't understand that yet. Can you rephrase it somehow? :)" }
 
-  def initialize(text)
+  def initialize(text, user)
     @text = text.downcase
+    @user = user
     @content = ""
   end
 

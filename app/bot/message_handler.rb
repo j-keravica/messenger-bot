@@ -2,21 +2,21 @@ class MessageHandler
 
   def initialize(message)
     @message = message
-  end
-
-  def create_user
-    @facebook_id = @message.sender["id"]
-    @sent_at = @message.sent_at
     @text = @message.text
-    @attachments = @message.attachments
-
-    user = ::User.find_or_create_by(:facebook_id => @facebook_id)
   end
 
   def create_response
-    response = CreateResponse.new(@text)
+    user = find_user
+    response = CreateResponse.new(@text, user)
 
     response.create
+  end
+
+  private
+
+  def find_user
+    facebook_id = @message.sender["id"]
+    ::User.find_or_create_by(:facebook_id => @facebook_id)
   end
 
 end

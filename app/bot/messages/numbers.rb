@@ -3,7 +3,7 @@ module Messages
 
     BUZZ_WORDS = ["123456"]
 
-    def self.options
+    def options
       [
         {
           "attachment": {

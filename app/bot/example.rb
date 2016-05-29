@@ -31,6 +31,13 @@ Bot.on :postback do |postback|
         text: "... and done! :)"
       }
     )
+  when "NO_PLAN"
+    Bot.deliver(
+      recipient: postback.sender,
+      message: {
+        text: "OK, we can revise it later then."
+      }
+    )
   when "ELECTRICITY"
     Bot.deliver(
       recipient: postback.sender,

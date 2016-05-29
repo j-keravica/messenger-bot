@@ -32,6 +32,8 @@ class CreateResponse
     @content ||= { text: UNPROCESSABLE[:content] }
   end
 
+  # plain messages
+
   def hi
     Messages::Hi.content if inside_a_message(Messages::Hi::BUZZ_WORDS)
   end
@@ -44,6 +46,8 @@ class CreateResponse
     Messages::Bill.content if inside_a_message(Messages::Bill::BUZZ_WORDS)
   end
 
+  # buttons messages
+
   def transfer
     Messages::Transfer.content if inside_a_message(Messages::Transfer::BUZZ_WORDS)
   end
@@ -51,6 +55,8 @@ class CreateResponse
   def numbers
     Messages::Numbers.content if inside_a_message(Messages::Numbers::BUZZ_WORDS)
   end
+
+  # unprocessable
 
   def unprocessable
     UNPROCESSABLE[:content]

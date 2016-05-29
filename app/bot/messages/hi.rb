@@ -2,10 +2,10 @@ module Messages
   class Hi < Base
 
     BUZZ_WORDS = ["hey", "hello", "hi"]
+    OPTIONS = ["What's up?", "Hey there.", "Oh, hi.", "Hello there."]
 
-    def self.options
-      ["What's up?", "Hey there.", "Oh, hi.", "Hello there."]
+    def options
+      OPTIONS
     end
-
   end
 end

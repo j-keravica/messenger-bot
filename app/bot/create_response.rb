@@ -2,8 +2,9 @@ class CreateResponse
 
   UNPROCESSABLE = { :content => "I'm sorry, I don't understand that yet. Can you rephrase it somehow? :)" }
 
-  def initialize(text)
+  def initialize(text, user)
     @text = text.downcase
+    @user = user
     @content = ""
   end
 
@@ -23,12 +24,11 @@ class CreateResponse
   private
 
   def set_content
-    hi || balance || bill
+    hi || balance || numbers
   end
 
   def set_buttons
-    @content = transfer || numbers
-
+    @content = bill
     @content ||= { text: UNPROCESSABLE[:content] }
   end
 
@@ -39,21 +39,17 @@ class CreateResponse
   end
 
   def balance
-    Messages::Balance.content if inside_a_message(Messages::Balance::BUZZ_WORDS)
+    Messages::Balance.content(@user) if inside_a_message(Messages::Balance::BUZZ_WORDS)
   end
 
-  def bill
-    Messages::Bill.content if inside_a_message(Messages::Bill::BUZZ_WORDS)
+  def numbers
+    Messages::Numbers.content if number?
   end
 
   # buttons messages
 
-  def transfer
-    Messages::Transfer.content if inside_a_message(Messages::Transfer::BUZZ_WORDS)
-  end
-
-  def numbers
-    Messages::Numbers.content if inside_a_message(Messages::Numbers::BUZZ_WORDS)
+  def bill
+    Messages::Bill.content if inside_a_message(Messages::Bill::BUZZ_WORDS)
   end
 
   # unprocessable
@@ -64,6 +60,10 @@ class CreateResponse
 
   def inside_a_message(words)
     words.any? { |word| @text.include? word }
+  end
+
+  def number?
+    !!/\A\d+\z/.match(@text)
   end
 
 end

@@ -70,7 +70,7 @@ class CreateResponse
   end
 
   def inside_a_message(words)
-    words.any? { |word| @text.split.include? word }
+    words.any? { |word| @text.include? word }
   end
 
   def number?

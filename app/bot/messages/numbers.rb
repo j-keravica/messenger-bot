@@ -1,9 +1,8 @@
 module Messages
-  class Transfer < Base
+  class Numbers < Base
 
-    BUZZ_WORDS = ["transfer"]
+    BUZZ_WORDS = ["123456"]
 
-    # Set of random options for "transfer" message that came from the user
     def self.options
       [
         {
@@ -11,12 +10,12 @@ module Messages
             "type": "template",
             "payload": {
               "template_type": "button",
-              "text": "You don't have that much on your account right now. Did you mean 10 000 RSD?",
+              "text": "That's 9450 00 RSD for electricity bill. May I pay?",
               "buttons":[
                 {
                   "type": "postback",
                   "title": "Yes",
-                  "payload": "YES"
+                  "payload": "YES_BILL"
                 },
                 {
                   "type": "postback",
@@ -28,10 +27,6 @@ module Messages
           }
         }
       ]
-    end
-
-    def self.attachment
-      ""
     end
 
   end

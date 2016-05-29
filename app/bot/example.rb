@@ -47,5 +47,19 @@ Bot.on :postback do |postback|
         text: "Your bill is now paid. Your main account is now at 15 051 RSD."
       }
     )
+  when "ELECTRICITY"
+    Bot.deliver(
+      recipient: postback.sender,
+      message: {
+        text: "How much for electricity this month?"
+      }
+    )
+  when "INTERNET"
+    Bot.deliver(
+      recipient: postback.sender,
+      message: {
+        text: "How much for internet this month?"
+      }
+    )
   end
 end

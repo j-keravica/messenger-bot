@@ -16,7 +16,7 @@ class MessageHandler
 
   def find_user
     facebook_id = @message.sender["id"]
-    ::User.find_or_create_by(:facebook_id => @facebook_id)
+    ::User.find_or_create_by(:facebook_id => facebook_id)
   end
 
 end

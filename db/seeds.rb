@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+@user = User.create(:facebook_id => "10154890767293696")
+Account.create(:number => "123", :currency => "RSD", :balance => 12000, :user_id => @user.id)

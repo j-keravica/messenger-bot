@@ -1,7 +1,7 @@
 module Messages
   class Bill < Base
 
-    BUZZ_WORDS = ["bill", "bills", "payday", "pay"]
+    BUZZ_WORDS = ["bill", "bills", "pay", "payment"]
 
     def options
       [

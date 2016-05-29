@@ -11,7 +11,7 @@ Account.all.each { |account| account.destroy }
 
 # Milan
 @user = User.create(:facebook_id => "10154890767293696")
-Account.create(:number => "123", :currency => "RSD", :balance => 12000, :user_id => @user.id)
+Account.create(:number => "123", :currency => "RSD", :balance => 120000, :user_id => @user.id)
 
 # Nikola
 @user = User.create(:facebook_id => "1797820410448672")

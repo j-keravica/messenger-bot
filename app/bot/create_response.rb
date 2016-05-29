@@ -28,7 +28,7 @@ class CreateResponse
   end
 
   def set_buttons
-    @content = bill
+    @content = bill || payday
     @content ||= { text: UNPROCESSABLE[:content] }
   end
 
@@ -43,7 +43,10 @@ class CreateResponse
   end
 
   def numbers
-    Messages::Numbers.content if number?
+    if number?
+      pay_bills
+      Messages::Numbers.content
+    end
   end
 
   def thanks
@@ -56,6 +59,10 @@ class CreateResponse
     Messages::Bill.content if inside_a_message(Messages::Bill::BUZZ_WORDS)
   end
 
+  def payday
+    Messages::Payday.content if inside_a_message(Messages::Payday::BUZZ_WORDS)
+  end
+
   # unprocessable
 
   def unprocessable
@@ -63,11 +70,18 @@ class CreateResponse
   end
 
   def inside_a_message(words)
-    words.any? { |word| @text.include? word }
+    words.any? { |word| @text.split.include? word }
   end
 
   def number?
     !!/\A\d+\z/.match(@text)
+  end
+
+  def pay_bills
+    account = @user.accounts.first
+    bill = @text.to_i
+    new_balance = account.balance - bill
+    account.update_attributes!(:balance => new_balance)
   end
 
 end

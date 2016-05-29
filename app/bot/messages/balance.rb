@@ -1,7 +1,7 @@
 module Messages
   class Balance < Base
 
-    BUZZ_WORDS = ["balance", "how much money", "how's my money"]
+    BUZZ_WORDS = ["balance", "how much money", "how's my money", "hows my money"]
 
     def options
       main_account = nil

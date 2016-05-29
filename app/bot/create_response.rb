@@ -1,6 +1,6 @@
 class CreateResponse
 
-  UNPROCESSABLE = { :content => "I'm sorry, I don't understand that yet. Can you rephrase it somehow? :)" }
+  UNPROCESSABLE = { :content => "I'm sorry, I don't understand that yet. I was only born yesterday :( " }
 
   def initialize(text, user)
     @text = text.downcase
@@ -24,7 +24,7 @@ class CreateResponse
   private
 
   def set_content
-    hi || balance || numbers
+    hi || balance || numbers || thanks
   end
 
   def set_buttons
@@ -44,6 +44,10 @@ class CreateResponse
 
   def numbers
     Messages::Numbers.content if number?
+  end
+
+  def thanks
+    Messages::Thanks.content if inside_a_message(Messages::Thanks::BUZZ_WORDS)
   end
 
   # buttons messages

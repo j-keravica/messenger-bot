@@ -26,6 +26,14 @@ RSpec.describe CreateResponse do
           expect(@response[:text]).to include("Balance on your main account is 12000")
         end
       end
+
+      context "Thanks message" do
+        let(:message) { "Thank you" }
+
+        it "send kiss message" do
+          expect(@response[:text]).to include(":*")
+        end
+      end
     end
 
     context "buttons messages" do

@@ -24,25 +24,11 @@ Bot.on :postback do |postback|
   puts "Human #{postback.recipient} said #{@payload}"
 
   case @payload
-  when "YES"
+  when "YES_PLAN"
     Bot.deliver(
       recipient: postback.sender,
       message: {
-        text: "OK, 10 000 RSD sent to Milos. Your main account is now at 24 501 RSD."
-      }
-    )
-  when "NO"
-    Bot.deliver(
-      recipient: postback.sender,
-      message: {
-        text: "Sure, anything else?"
-      }
-    )
-  when "YES_BILL"
-    Bot.deliver(
-      recipient: postback.sender,
-      message: {
-        text: "Your bill is now paid. Your main account is now at 15 051 RSD."
+        text: "... and done! :)"
       }
     )
   when "ELECTRICITY"

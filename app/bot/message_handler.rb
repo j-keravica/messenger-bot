@@ -5,12 +5,12 @@ class MessageHandler
   end
 
   def create_user
-    @facebook_id = @message.sender
+    @facebook_id = @message.sender["id"]
     @sent_at = @message.sent_at
     @text = @message.text
     @attachments = @message.attachments
 
-    # user = ::User.find_or_create_by(:facebook_id => @facebook_id)
+    user = ::User.find_or_create_by(:facebook_id => @facebook_id)
   end
 
   def create_response

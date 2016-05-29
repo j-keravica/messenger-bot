@@ -11,19 +11,31 @@ RSpec.describe CreateResponse do
       end
 
       it "send Hi message" do
-        expect(@response).to eq(CreateResponse::HI)
+        expect(Messages::Hi.options).to include(@response[:text])
       end
     end
 
-    context "Loan message" do
-      let(:message) { "Do you have a loan for me." }
+    context "Ballance message" do
+      let(:message) { "What's my balance" }
 
       before do
         @response = CreateResponse.new(message).create
       end
 
       it "send Loan message" do
-        expect(@response).to eq(CreateResponse::LOAN)
+        expect(Messages::Balance.options).to include(@response[:text])
+      end
+    end
+
+    context "Transfer message" do
+      let(:message) { "Transfer 100 bucks to Milos." }
+
+      before do
+        @response = CreateResponse.new(message).create
+      end
+
+      it "send Transfer message" do
+        expect(Messages::Transfer.options).to include(@response)
       end
     end
 
@@ -35,7 +47,7 @@ RSpec.describe CreateResponse do
       end
 
       it "send Unprocessable message" do
-        expect(@response).to eq(CreateResponse::UNPROCESSABLE)
+        expect(@response[:text]).to eq(CreateResponse::UNPROCESSABLE[:content])
       end
     end
   end

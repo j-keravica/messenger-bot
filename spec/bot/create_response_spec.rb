@@ -15,7 +15,8 @@ RSpec.describe CreateResponse do
         let(:message) { "Hi there, how you doin?" }
 
         it "send Hi message" do
-          expect(Messages::Hi::OPTIONS).to include(@response[:text])
+          message = Messages::Hi.new(@user)
+          expect(message.options).to include(@response[:text])
         end
       end
 
@@ -43,7 +44,7 @@ RSpec.describe CreateResponse do
         end
 
         it "send Numbers message" do
-          expect(Messages::Numbers::OPTIONS).to include(@response[:text])
+          expect(@response[:text]).to eq("Done!")
         end
       end
     end

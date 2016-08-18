@@ -1,10 +1,8 @@
 module Messages
   class Numbers < Base
 
-    OPTIONS = ["Done!"]
-
     def options
-      OPTIONS
+      ["Done!"]
     end
 
   end
